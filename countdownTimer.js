@@ -55,6 +55,7 @@ window.createCountDownTimer = (StartDateTime,EndDateTime) => {
 
     if(currentTime > endDateTime){
       isFinished =  true;
+      timeStart = false;
     }
 
     var data = {

@@ -10,16 +10,17 @@
 	<h1 id="timer"></h1>
 	<script type="text/javascript">
 		let timer = setInterval(function(){
-			let time = window.createCountDownTimer(`06/26/2022 1:30:00 PM`,`06/26/2022 2:00:00 PM`);
+			let time = window.createCountDownTimer(`06/26/2022 1:30:00 PM`,`06/26/2022 4:35:00 PM`);
 			timerSelector = document.getElementById('timer');
 			if(time.isFinished == true){
+				timerSelector.innerHTML = "Time Finished";
 				clearInterval(timer);
 			}
 			if(time.isInWaitingMode == true){
 				timerSelector.innerHTML = `Timer Will Start in <br />${time.waitingTime.days} : ${time.waitingTime.hours} : ${time.waitingTime.minutes} : ${time.waitingTime.seconds}`;
 			}
 			if(time.timeStart == true){
-				timerSelector.innerText = `${time.days} : ${time.hours} : ${time.minutes} : ${time.seconds}`;
+				timerSelector.innerHTML = `${time.days} : ${time.hours} : ${time.minutes} : ${time.seconds}`;
 			}
 		},1000)
 	</script>
