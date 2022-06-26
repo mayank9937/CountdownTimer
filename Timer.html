@@ -12,14 +12,14 @@
 		let timer = setInterval(function(){
 			let time = window.createCountDownTimer(`06/26/2022 1:30:00 PM`,`06/26/2022 2:00:00 PM`);
 			timerSelector = document.getElementById('timer');
+			if(time.isFinished == true){
+				clearInterval(timer);
+			}
 			if(time.isInWaitingMode == true){
 				timerSelector.innerHTML = `Timer Will Start in <br />${time.waitingTime.days} : ${time.waitingTime.hours} : ${time.waitingTime.minutes} : ${time.waitingTime.seconds}`;
 			}
 			if(time.timeStart == true){
 				timerSelector.innerText = `${time.days} : ${time.hours} : ${time.minutes} : ${time.seconds}`;
-			}
-			if(time.isFinished == true){
-				clearInterval(timer);
 			}
 		},1000)
 	</script>
