@@ -1,3 +1,15 @@
+
+<!-- 
+	-------------------------------
+	Referances for Moment Js
+	-------------------------------
+
+	https://momentjs.com/
+	TimeZone List : https://gist.github.com/diogocapela/12c6617fc87607d11fd62d2a4f42b02a
+
+ -->
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,20 +21,27 @@
 <body>
 	<h1 id="timer"></h1>
 	<script type="text/javascript">
-		let timer = setInterval(function(){
-			let time = window.createCountDownTimer(`06/26/2022 1:30:00 PM`,`06/26/2022 4:35:00 PM`);
-			timerSelector = document.getElementById('timer');
-			if(time.isFinished == true){
-				timerSelector.innerHTML = "Time Finished";
-				clearInterval(timer);
-			}
-			if(time.isInWaitingMode == true){
-				timerSelector.innerHTML = `Timer Will Start in <br />${time.waitingTime.days} : ${time.waitingTime.hours} : ${time.waitingTime.minutes} : ${time.waitingTime.seconds}`;
-			}
-			if(time.timeStart == true){
-				timerSelector.innerHTML = `${time.days} : ${time.hours} : ${time.minutes} : ${time.seconds}`;
-			}
-		},1000)
+
+		let timerSelector = document.getElementById('timer');
+		let clockText = 'Sale ends in&nbsp;[countdown]&nbsp;shop now';
+		let afterClockFinishText = 'Sale Ended';
+		let countDownTimer = setInterval(function(){
+		let timer = window.createCountDownTimer('08/16/2022 01:30:00 PM','08/17/2022 11:06:00 PM','Europe/London',false),
+			timerText = `${timer.days}d ${timer.hours}h ${timer.minutes}m`,
+			clock = clockText.replace('[countdown]',timerText);
+
+		if(timer.timeStart == true){
+			timerSelector.innerText = clock;
+		}
+		if(timer.timeFinished == true){
+			timerSelector.innerText = afterClockFinishText;
+			clearInterval(countDownTimer);
+		}
+		},1000);
+
+		console.log("CMS Start Date :: 08/16/2022 01:30:00 PM \n Moment Date :: ",moment(new Date('08/16/2022 01:30:00 PM')).tz('Europe/London').format('MM/DD/YYYY HH:mm:ss'))
+		console.log("CMS End Date :: 08/17/2022 11:06:00 PM \n Moment Date :: ",moment(new Date('08/17/2022 11:06:00 PM')).tz('Europe/London').format('MM/DD/YYYY HH:mm:ss'))
+	
 	</script>
 </body>
 </html>
